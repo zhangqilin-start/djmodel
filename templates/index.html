@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-1.8.3.min.js"> </script>
+{#    <script>#}
+{#        $(function () {#}
+{#            alert('你好')#}
+{##}
+{#        })#}
+{#    </script>#}
+</head>
+<body >
+{#<h1 style="background: yellow">用户输入</h1>#}
+{#<form action="/index/" method="post">#}
+{#    <input type="text" name="username"/>#}
+{#    <input type="password" name="password"/>#}
+{#    <input type="submit" value="提交"/>#}
+{#</form>#}
+{#<hr>#}
+{#<h1>用户展示</h1>#}
+{#<table border="1">#}
+{#    <th>用户名</th>#}
+{#    <th>密码</th>#}
+{#    <tdead>#}
+{#        {% for line in data %}#}
+{#        <tr>#}
+{#            <td>{{ line.user }}</td>#}
+{#            <td>{{ line.pwd }}</td>#}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#    </tdead>#}
+{##}
+{#</table>#}
+
+
+
+{#<p>{{ name }}</p>#}
+{#<p>{{ i }}</p>#}
+{#<p>{{ l }}</p>#}
+{#<p>{{ b }}</p>#}
+{#<p>{{ alex }}</p>#}
+{#<p>{{ alex }}</p>#}
+{#<p>{{ person_list }}</p>#}
+{#<p>{{ info }}</p>#}
+{##}
+{#想要列表1的第二个元素#}
+{#<p>{{ l.1 }}</p>#}
+{#获取字典info中name哪个key对应的value#}
+{#<p>{{ info.name }}</p>#}
+{#获取对象alex的name属性值#}
+{#<p>{{ alex.name }}</p>#}
+{#获取person_list列表中第二对象的age属性值#}
+{#<p>{{ person_list.1.age }}</p>#}
+{##}
+{#<h3>过滤器</h3>#}
+{#时间类型会自动给你渲染好格式,如 JUne 6,2018,4:32 p.m.##}
+{#{{ now }}#}
+{#把上述时间类型通过过滤器转化格式,date是Django提供的过滤器的名字,固定的#}
+{#{{ now|date:'Y-m-d' }}#}
+{#过滤器#}
+{#default 如果一个变量是false或者为空,使用给定的默认值,否则使用变量的值#}
+{#{{ empty_list|default:'数据为空' }}#}
+{#length:返回值的长度,它对字符串和列表都起作用#}
+{#{{ person_list|length }}#}
+{#filesizeformat:将值格式化为一个人类可读的文件尺寸(例如13kb,4.1mb)#}
+{#<p>{{ file_size|filesizeformat }}</p>#}
+{#data:如果value=datetime.datetime.now()#}
+{#slice:把字符串按照切片的功能进行切割显示(顾头不顾尾)#}
+{#{{ str|slice:'2:-1' }}#}
+{#truncatechars:如果字符串字符多于指定的字符数量,那么会被截断,截断的字符串将以可翻译的省略号序列("....")#}
+{#<p>{{ text|truncatechars:10 }}</p>#}
+{#truncatewords:按照单词截取#}
+{#<p>{{ text|truncatewords:6 }}</p>#}
+{#safe:Django的模板中会对HTML标签和js等语法标签进行自动转义:为了在Django中关闭HTML的自动转义有两种方式#}
+{#<p>{{ link }}</p>#}
+{#浏览器效果:<a href="#">click</a>#}
+{#<p>{{ link|safe }}</p>#}
+{#add:加法;如下:让其加100#}
+{#<p>{{ 1.0|add:100 }}</p>#}
+{#upper:转成大写#}
+{#<p>{{ name|upper }}</p>#}
+{#<hr>#}
+{#标签#}
+{#for标签:遍历每一个元素#}
+{#i就是l列表中的元素#}
+{#{% for i in l %}#}
+{#<p>{{ i }}</p>#}
+{#{% endfor %}#}
+{#可以利用{for obj in list reversed%}反向完成循环#}
+{#i是info字典中的每个key#}
+{#{% for i in info %}#}
+{#<p>{{ i }}</p>#}
+{#{% endfor %}#}
+{#遍历一个字典#}
+{#{% for key,val in info.items  %}#}
+{#<p>{{ key }}:{{ val }}</p>#}
+{#{% endfor %}#}
+{##}
+{##}
+{#{% for person in person_list %}#}
+{#<p>{{ person.name }} {{ person.age }}</p>#}
+{#{% endfor %}#}
+{##}
+{#for...empty:for 标签带有一个可选的{% empty %}从句,以便在给出组是空的或没有被找到时,可以有所操作.#}
+{#{% for i in empty_list %}#}
+{#<p>{{ i }}</p>#}
+{#    {% empty %}#}
+{#    <p>内容为空</p>#}
+{#{% endfor %}#}
+{#如果empty-list为空,就会显示{% empt %}后面的 <p>内容为空</p>标签#}
+{#<hr>#}
+{#if标签:{% if %}会对一个变量求值,如果它的值是True(存在,不为空,且不是boolean类型的false值)#}
+{#{% if num > 100 or num < 0  %}#}
+{#    <p>无效</p>#}
+{#    {% elif num > 80 and num < 100 %}#}
+{#    <p>优秀</p>#}
+{#    {% else %}#}
+{#    <p>凑合吧</p>#}
+{#{% endif %}#}
+{##}
+{#with:使用一个简单地名字缓存一个复杂的变量,当你需要使用一个昂贵的方法#}
+{#{% with person_list.1.age as p_age %}#}
+{#此时 p_age就代表person_list.1.age#}
+{#{{ p_age }}#}
+{#{{ p_age }}#}
+{#{% endwith %}#}
+{#csrf_token:这个标签用于跨站请求伪造保护#}
+
+
+
+{#<h3>自定义过滤器,标签</h3>#}
+{#在使用自定义的过滤器的html文件中导入之前创建的 my_tags_filters.#}
+{#{% load my_tags_filters %}#}
+{#<p>{{ i|multi_filter:20 }}</p>#}
+{#函数multi_filter中有两个形参,所有过滤器multi_filter中要给一个参数如上面的20#}
+{#调用自定义标签#}
+{#<p>{% multi_tag 7 9 %}</p>#}
+{##}
+{#自定义过滤器的优势#}
+{#变量乘以20如果大于100就显示100,否则就显示它本身#}
+{#{% if i|multi_filter:20 > 100 %}#}
+{#    <p>100</p>#}
+{#    {% else %}#}
+{#    <p>{{ i }}</p>#}
+{#{% endif %}#}
+{#自定义标签不能放到流程控制判断中#}
+
+<h3>用户输入界面</h3>
+<form action="" method="post">
+    用户输入: <input type="text"placeholder="请输入用户名" name="user">
+    <input type="password" name="password">
+    <input type="submit" value="提交">
+</form>
+
+<table border="2px">
+    <thead>
+        <th>用户名</th>
+        <th>密码</th>
+    </thead>
+    <tbody>
+        {% for item in data %}
+            <tr>
+                <td>{{ item.use }}</td>
+                <td>{{ item.password }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
+<style>
+</style>
+
+
+
+
+
+
+
+
+
+
